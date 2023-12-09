@@ -283,6 +283,10 @@ textarea {
 	display: flex;
 	flex-direction: column;
 }
+.total-address>input {
+	width: 319px;
+	margin-bottom: 15px;
+}
 
 .seller-regcode {
 	display: flex;
@@ -372,12 +376,14 @@ hr {
 
 .user-star-wrap {
 	display: flex;
+	align-items:center;
 }
 
 .review-image {
 	width: 250px;
 	height: 300px;
 	border-radius: 5px;
+	margin-top: 10px;
 }
 
 .review-wrap {
@@ -518,10 +524,10 @@ hr {
 	}
 	
 	// 메뉴 삭제
-	function deleteMenu() {
+	function deleteMenu(menuCode) {
 		$.ajax({
 			type: "PUT",
-			url: "${path}/sellerMenu", //path Variable  ,
+			url: "${path}/sellerMenu/"+menuCode, //path Variable  ,
 			success : function (data){
 				window.location.reload();
 			},
@@ -737,7 +743,7 @@ hr {
 											<button type="button" class="menu-modify-btn-without-c"
 												onclick="menuModifyBtnWithoutC(this)">수정</button>
 											<button type="button" class="menu-delete-btn"
-												onclick="deleteMenu()">삭제</button>
+												onclick="deleteMenu(${menuList.menuCode})">삭제</button>
 										</div>
 									</form>
 								</c:when>
@@ -798,9 +804,10 @@ hr {
 								<input type="text" id="seller-name" value="" readonly>
 							</div>
 							<div class="store-address">
-								<div class="total-address">매장주소</div>
+								<div class="total-address">매장주소
 								<input type="text" id="store-address" value="">
 								<input type="text" id="store-detail-address" value="">
+								</div>
 							</div>
 							<div class="seller-regcode">
 								<div>사업자등록번호</div>
@@ -834,9 +841,9 @@ hr {
 					<div>${item.reviewContent}</div>
 
 					<c:if test="${not empty item.reviewImageName}">
-						<img class="review-image"
-							src="${path}/reviewImages/${item.reviewImageName}"
-							alt="Review Image">
+
+						<img class="review-image" src="/baemin/reviewImages/${item.reviewImageName}" alt="Review Image">
+
 					</c:if>
 
 					

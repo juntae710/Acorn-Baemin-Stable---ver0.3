@@ -30,7 +30,7 @@ body {
 ul {
 	list-style: none;
 }
-input, option, select{
+input, option, select, textarea{
 font-family: '';
 }
 /* 헤더 ////////////////////////////////////////////////////*/
@@ -55,6 +55,7 @@ header {
 section{
 width: 1280px;
 padding-top: 140px;
+padding-bottom: 50px;
 }
 
 .header-wrap {

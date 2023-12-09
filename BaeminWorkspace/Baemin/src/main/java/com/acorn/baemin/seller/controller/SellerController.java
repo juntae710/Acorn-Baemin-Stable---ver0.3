@@ -15,6 +15,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -182,10 +183,10 @@ public class SellerController {
 
 	// 메뉴 삭제
 	@ResponseBody
-	@PutMapping("/sellerMenu")
-	public void deleteMenu(HttpSession session) {
-		Integer menuCode = (Integer) session.getAttribute("menuCode");
-		System.out.println(menuCode);
+	@PutMapping("/sellerMenu/{menuCode}")
+	public void deleteMenu(@PathVariable Integer menuCode) {
+		
+		System.out.println("메뉴조회 :"+ menuCode);
 		sc.deleteMenu(menuCode);
 	}
 
@@ -284,7 +285,7 @@ public class SellerController {
 	@ResponseBody
 	@RequestMapping(value = "/reviewImages/{reviewImages:.*}", method = RequestMethod.GET)
 	public Resource ReviewImg(@PathVariable String reviewImages) throws MalformedURLException {
-		return new UrlResource("file:c:\\test\\upload\\" + reviewImages);
+		return new UrlResource("file:/usr/local/tomcat/upload/" + reviewImages);
 	}
 	
 	// 답글 등록

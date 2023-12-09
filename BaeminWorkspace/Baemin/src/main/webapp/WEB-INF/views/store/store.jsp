@@ -237,11 +237,13 @@ button {
 }
 .user-star-wrap {
 	display: flex;
+	align-items:center;
 }
 .review-image {
 	width: 250px;
 	height: 300px;
 	border-radius: 5px;
+	margin-top: 10px;
 }
 .review-wrap {
 	margin-top: 20px;
@@ -549,9 +551,10 @@ button {
 						<div>${item.reviewContent}</div>
 
 						<c:if test="${not empty item.reviewImageName}">
-							<img class="review-image"
-								src="${path}/reviewImages/${item.reviewImageName}"
-								alt="Review Image">
+
+							<img class="review-image" src="/baemin/reviewImages/${item.reviewImageName}" alt="Review Image">
+
+
 						</c:if>
 						<c:if test="${not empty item.answerContent}">
 						<div>사장님</div>
